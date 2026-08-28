@@ -33,6 +33,13 @@ DOCS = {
         "subtitle": "Weekend variance and its option pricing, in a venue that "
                     "never shuts",
     },
+    # The submission draft is anonymised for double-anonymous review, so it
+    # carries a title and no author block; the working paper keeps both.
+    "weekend_ms": {
+        "title": "Closure or Information? Weekend Variance and Option Prices "
+                 "in a Market That Never Closes",
+        "subtitle": "",
+    },
     "decay": {
         "title": "The Half-Life of a Pricing Error",
         "subtitle": "Trading the crypto weekend, 2017-2026: seven constructions, "
@@ -159,7 +166,11 @@ def main() -> int:
         "--pdf-engine", "xelatex",
         "--include-in-header", str(header),
         "--resource-path", str(ROOT),
+    ] + ([] if a.journal else [
+        # A contents page suits a 40-page working paper and looks out of place
+        # on a journal submission, which reviewers read front to back.
         "--toc", "--toc-depth=2",
+    ]) + [
         "-V", "documentclass=article",
         "-V", "papersize=a4",
         "-V", "geometry:margin=2.4cm",
