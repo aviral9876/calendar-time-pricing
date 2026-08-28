@@ -1,8 +1,4 @@
-# The Price of Calendar Time in a Market That Never Closes
-
-*Submission draft. The full working paper, an electronic companion with all
-supporting tables, and code reproducing every figure are available at the
-project repository.*
+# Closure or Information? Weekend Variance and Option Prices in a Market That Never Closes
 
 ---
 
@@ -26,6 +22,9 @@ demonstrable failure is *within* the weekend: all four books price Saturday as
 indistinguishable from Sunday when Saturday is reliably quieter — and the venue's
 own expiry schedule makes that error unarbitrageable, offering both sides of the
 offsetting spread in 13 hours of the week and none of them on a weekday.
+
+**Keywords:** calendar time; realized variance; option pricing; market
+microstructure; cryptocurrency derivatives
 
 ---
 
@@ -116,8 +115,10 @@ both failures are identified rather than inferred.
 
 ### Related literature
 
-French and Roll (1986) is the origin of the question. Barclay, Litzenberger and
-Warner (1990) came closest to separating the mechanisms, using a natural
+French and Roll (1986) is the origin of the question, and Oldfield and Rogalski
+(1980) had already framed returns as accruing over trading and non-trading
+periods that need not share a clock. Barclay, Litzenberger and Warner (1990) came
+closest to separating the mechanisms, using a natural
 experiment in the opposite direction from ours: when the Tokyo Stock Exchange
 opened on Saturdays, weekend variance rose while weekly variance was unchanged
 despite higher volume. They varied whether an exchange was *open* while holding
@@ -129,8 +130,19 @@ than calendar time as the relevant clock.
 On the option side, practitioners have long used trading-day rather than
 calendar-day clocks, and the academic treatment of weekend and holiday effects in
 implied volatility is thin relative to its practical importance. Our contribution
-is a venue where the clock convention is identified from within-instant
-variation rather than assumed.
+is a venue where the clock convention is identified from within-instant variation
+rather than assumed.
+
+Three further literatures bear on the interpretation. Whether the residual gap is
+compensation rather than error is a variance-risk-premium question in the sense
+of Carr and Wu (2009), and §6 answers it in the negative for this particular
+quantity. Whether it instead reflects order flow rather than beliefs is the
+demand-pressure question of Gârleanu, Pedersen and Poteshman (2009) and Bollen and
+Whaley (2004); we cannot address it, because the trade tape carries the aggressor
+side but not the dealer's inventory, and we say so rather than infer. And the
+crypto option market has its own measurement literature — Alexander and Imeraj
+(2023) on delta-hedging Deribit options under a smile — on which the hedging
+conventions in §7 draw.
 
 ## 2. Institutional setting and data
 
@@ -166,7 +178,11 @@ negotiated or double-counted, retains liquidations, and keeps contracts with
 $|\Delta|$ between 0.30 and 0.70 and maturity between six hours and fourteen
 days. Realized variance comes from five-minute perpetual-future returns over
 2,923 Bitcoin days, 2,704 Ether days, 915 Solana days and 887 XRP days, at 100%,
-100%, 99.9% and 99.9% bar completeness. Returns spanning a feed gap are dropped
+100%, 99.9% and 99.9% bar completeness. Five minutes is the conventional
+compromise between discretization error and microstructure noise (Zhang, Mykland
+and Aït-Sahalia 2005, Hansen and Lunde 2006); §5.3 varies it from five minutes to
+two hours, and the direction in which estimates move under that variation is used
+there as a diagnostic rather than reported as a robustness check. Returns spanning a feed gap are dropped
 rather than winsorized, since a multi-period return carrying a one-period label
 inflates exactly the tail statistics §6 depends on.
 
@@ -584,10 +600,14 @@ plus $\kappa$ times the jump part, and the priced weekend ratio $R^*(\kappa)$ is
 monotone in $\kappa$. Its limit as $\kappa 	o \infty$ is therefore a **bound**:
 no jump-risk premium of any size can push the priced ratio past it.
 
-The split uses a three-standard-deviation truncation with the local scale taken
-from the same day's bipower variation, so a quieter weekend is not mechanically
-classified as jump-free, and with an intraday seasonality factor estimated
-separately for each regime. Truncation misclassifies roughly 0.3% of ordinary
+The split uses threshold truncation in the sense of Mancini (2009), at three
+standard deviations, with the local scale taken from the same day's bipower
+variation (Barndorff-Nielsen and Shephard 2004) so that a quieter weekend is not
+mechanically classified as jump-free, and with an intraday seasonality factor
+estimated separately for each regime in the manner of Andersen and Bollerslev
+(1997). Estimating the seasonality within regime matters here in a way it does
+not in most applications: a factor pooled across day types would carry the very
+weekend effect the paper measures. Truncation misclassifies roughly 0.3% of ordinary
 returns by construction; the bias applies to both regimes and largely cancels in
 the ratio. That the measured jump shares are not an artefact of the estimator's
 floor is checked directly: run on a simulated pure diffusion of the same length
@@ -669,7 +689,8 @@ whose two legs rarely exist at the same time. Costs are measured rather than
 assumed — Deribit's 0.03% option fee capped at 12.5% of premium, 0.05% taker on
 every perpetual rebalance, and an effective half-spread recovered from the tape by
 differencing buyer-paid against seller-received implied volatility on the same
-instrument-day.
+instrument-day — the Roll (1984) intuition applied in volatility units, which the
+exchange-provided aggressor flag makes direct rather than inferential.
 
 **Table 7. The spread, gross and net of measured costs (daily rehedging).**
 
@@ -780,6 +801,55 @@ truncation thresholds and seasonality treatments; the complete day-of-week
 profile tables; the full trimming and sampling ladders behind Table 5; the
 44-setting robustness grid behind Table 6; the smile and wing analysis; and the
 complete trading results, including the rehedge ladder, the outright-short
-variant, the contract-selection sweep and the maker fee decomposition. All code
-and data-construction scripts are in the project repository, together with the
-test suite that pins every estimator reported here.
+variant, the contract-selection sweep and the maker fee decomposition.
+
+A full replication package accompanies the submission: all collection and
+estimation code, a mapping from every table, figure and in-text number to the
+script that produces it, and the test suite that pins each estimator against
+simulated data with a planted answer. No licensed or proprietary data is used —
+every input comes from a public API requiring no account or agreement — so the
+paper is reproducible from nothing.
+
+---
+
+## References
+
+Alexander C, Imeraj A (2023) Delta hedging bitcoin options with a smile.
+*Quant. Finance* 23(5):799–817.
+
+Andersen TG, Bollerslev T (1997) Intraday periodicity and volatility persistence
+in financial markets. *J. Empirical Finance* 4(2–3):115–158.
+
+Barclay MJ, Litzenberger RH, Warner JB (1990) Private information, trading
+volume, and stock-return variances. *Rev. Financial Stud.* 3(2):233–253.
+
+Barndorff-Nielsen OE, Shephard N (2004) Power and bipower variation with
+stochastic volatility and jumps. *J. Financial Econometrics* 2(1):1–37.
+
+Bollen NPB, Whaley RE (2004) Does net buying pressure affect the shape of implied
+volatility functions? *J. Finance* 59(2):711–753.
+
+Carr P, Wu L (2009) Variance risk premiums. *Rev. Financial Stud.*
+22(3):1311–1341.
+
+French KR, Roll R (1986) Stock return variances: The arrival of information and
+the reaction of traders. *J. Financial Econom.* 17(1):5–26.
+
+Gârleanu N, Pedersen LH, Poteshman AM (2009) Demand-based option pricing.
+*Rev. Financial Stud.* 22(10):4259–4299.
+
+Hansen PR, Lunde A (2006) Realized variance and market microstructure noise.
+*J. Bus. Econom. Statist.* 24(2):127–161.
+
+Mancini C (2009) Non-parametric threshold estimation for models with stochastic
+diffusion coefficient and jumps. *Scand. J. Statist.* 36(2):270–296.
+
+Oldfield GS, Rogalski RJ (1980) A theory of common stock returns over trading and
+non-trading periods. *J. Finance* 35(3):729–751.
+
+Roll R (1984) A simple implicit measure of the effective bid-ask spread in an
+efficient market. *J. Finance* 39(4):1127–1139.
+
+Zhang L, Mykland PA, Aït-Sahalia Y (2005) A tale of two time scales: Determining
+integrated volatility with noisy high-frequency data. *J. Amer. Statist. Assoc.*
+100(472):1394–1411.

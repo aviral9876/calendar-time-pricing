@@ -121,6 +121,9 @@ def main() -> int:
                     help="markdown to render (default: the paper)")
     ap.add_argument("--out", default=None,
                     help="output PDF (default: the source with a .pdf suffix)")
+    ap.add_argument("--journal", action="store_true",
+                    help="journal review geometry: 1in margins, 1.5 line "
+                         "spacing, letter paper")
     ap.add_argument("--keep-tex", action="store_true")
     a = ap.parse_args()
     src = Path(a.src)
@@ -142,6 +145,13 @@ def main() -> int:
     header = build / "preamble.tex"
     header.write_text(PREAMBLE, encoding="utf-8")
 
+    # Management Science requires 11-point type, one-inch margins and at
+    # least 1.5 line spacing on review copies. --journal swaps the
+    # working-paper geometry for those and changes nothing else, so one
+    # source builds both.
+    journal = ["-V", "geometry:margin=1in", "-V", "linestretch=1.5",
+               "-V", "papersize=letter"] if a.journal else []
+
     cmd = [
         "pandoc", str(md),
         "-o", str(out),
@@ -156,7 +166,7 @@ def main() -> int:
         "-V", "fontsize=11pt",
         "-V", "linkcolor=black", "-V", "urlcolor=black",
         "-V", "colorlinks=true", "-V", "toccolor=black",
-    ]
+    ] + journal
     for k, v in meta_for(src.stem).items():
         cmd += ["-M", f"{k}={v}"]
     for k, v in pick_fonts().items():
