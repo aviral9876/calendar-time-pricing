@@ -198,9 +198,32 @@ docs/            data_notes.md records every correction and its diagnosis
 
 ## 8. Contact and disclosure
 
-The AsCollected project page required at submission records author contributions
-and data sources; its URL is supplied in the submission system.
+### AsCollected project page
 
-No funding supported this work. The authors have no financial interest in
-Deribit or in any of the assets studied, and hold no positions in them. No
-proprietary or confidential data was used.
+Management Science requires an AsCollected project page at submission, recording
+which author did what and which data were used. Its URL must be disclosed in the
+submission system and is repeated here so a replicator can find it from the code.
+
+> **AsCollected project page:** `<<PASTE URL HERE BEFORE SUBMITTING>>`
+
+Create it at <https://ascollected.org>. For this project the page should record:
+
+| Field | What applies here |
+|---|---|
+| Data source | Deribit public history API, `history.deribit.com` — no authentication, no licence, no vendor agreement |
+| Collection | Automated, by `scripts/run_backfill.py`; date range and per-day manifest in `data/manifest/` |
+| Data type | Observational market data; no human subjects, no experiment, no survey |
+| Third-party data | None |
+| Author contributions | To be completed by the author(s) |
+
+### Funding and competing interests
+
+> **To be confirmed by the author before submission.** The statements below are
+> placeholders reflecting no known funding or position, and must be verified
+> rather than inherited from this file.
+
+- Funding: none known.
+- Positions in the assets studied (BTC, ETH, SOL, XRP, PAXG) or any financial
+  interest in Deribit: none known.
+- Proprietary or confidential data: none used. This one is verifiable from the
+  code — every input comes from the public endpoints listed in §4.
