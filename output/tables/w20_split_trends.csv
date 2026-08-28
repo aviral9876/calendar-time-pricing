@@ -1,0 +1,5 @@
+asset,series,slope_per_year,se,t,n_years,first,last
+BTC,implied (relative effect),-0.144262,0.011559,-12.480283,7,-0.09559,-0.850783
+BTC,realized (ratio),-0.024939,0.02002,-1.245733,7,0.520764,0.530352
+ETH,implied (relative effect),-0.116554,0.011093,-10.506597,7,0.001254,-0.604291
+ETH,realized (ratio),-0.013224,0.01208,-1.094745,7,0.696382,0.607233

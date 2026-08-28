@@ -1,0 +1,11 @@
+# Collected and constructed data: 2.8 GB, rebuilt by scripts/run_backfill.py.
+# See REPLICATION.md section 4 for why it is not deposited.
+data/
+
+# Build artefacts
+paper/_build/
+output/figures/*.pdf
+*.egg-info/
+__pycache__/
+*.pyc
+.pytest_cache/

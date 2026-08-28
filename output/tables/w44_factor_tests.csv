@@ -1,0 +1,17 @@
+asset,factor,name,expected_sign,rationale,beta_per_sd,t,r2,n,sign_as_expected,beta_first_half,t_first_half,n_first_half
+BTC,f_iv_premium,IV / realized vol of the week so far,1,"the seller's cushion of section 5.6, as a desk would see it",0.03233298751940002,3.7126149770974792,0.05495466248282621,239,True,0.047890729441716136,3.3155539492687924,117
+BTC,f_iv,entry implied volatility,1,a richer quote is a bigger buffer,0.017220273959108925,1.2751400869673999,0.014336230811841877,244,True,0.003795556286090048,0.19176980435688157,122
+BTC,f_wd_vol,realized vol of the week so far,-1,"volatility clusters, so a loud week forecasts a loud weekend",-0.005108601204034173,-0.34688083055377167,0.0013718823807654656,239,True,-0.030852382606412175,-1.723538315695354,117
+BTC,f_friday_move_abs,absolute index move over Friday,-1,a market already moving into the weekend keeps moving,-0.0022479411618671515,-0.1957714354462786,0.00026563344525232235,239,True,0.0024926233253114677,0.1423273297519192,117
+BTC,f_funding_abs,"absolute perpetual funding, trailing week",-1,crowded leverage is what liquidation cascades run on,-0.0005352214117303184,-0.04600291308706247,1.4790843336109916e-05,223,True,-0.019468277038892534,-1.2079877050370151,101
+BTC,f_wknd_frac,weekend share of the contract's life,1,more of the thing the paper says is mispriced,0.013227501842614795,1.3370349867889242,0.008458834600044929,244,True,0.023167159006362008,1.5512814885631359,122
+BTC,f_dvol_chg,5-day change in DVOL,-1,a rising volatility index is a regime turning against a short,0.015690041140088384,0.5991744615697931,0.013080468955269042,75,False,,,15
+BTC,f_iv_rank,IV percentile within its own trailing year,1,"the level filter that failed, made stationary",0.02446093026679118,2.2349132289481104,0.03186998689998377,232,True,0.022372906593569494,1.3411633807070655,110
+ETH,f_iv_premium,IV / realized vol of the week so far,1,"the seller's cushion of section 5.6, as a desk would see it",0.042082270972497865,3.050215992722059,0.041632552997844074,168,True,0.05213437923961283,2.140579295888269,84
+ETH,f_iv,entry implied volatility,1,a richer quote is a bigger buffer,0.02615952289290112,1.3700592215435206,0.01608771427381761,168,True,0.01717964400897054,0.6190318118527695,84
+ETH,f_wd_vol,realized vol of the week so far,-1,"volatility clusters, so a loud week forecasts a loud weekend",0.007643720334745092,0.36035333045872797,0.0013735494025444162,168,False,-0.004122879710277572,-0.12971074763186313,84
+ETH,f_friday_move_abs,absolute index move over Friday,-1,a market already moving into the weekend keeps moving,-0.019927466922424256,-1.197975415357158,0.009335528312392039,168,True,-0.008513139460520847,-0.4038718269110563,84
+ETH,f_funding_abs,"absolute perpetual funding, trailing week",-1,crowded leverage is what liquidation cascades run on,-0.006711578597999343,-0.3807774951036299,0.001052729194209956,167,True,-0.0251266068580825,-0.9467910342587843,83
+ETH,f_wknd_frac,weekend share of the contract's life,1,more of the thing the paper says is mispriced,0.02495085472206446,0.8301273411214425,0.014635432517653202,168,True,0.043991243806711815,1.055069703008411,84
+ETH,f_dvol_chg,5-day change in DVOL,-1,a rising volatility index is a regime turning against a short,0.027671779390911647,0.49629684652453704,0.022578643204056448,56,False,,,23
+ETH,f_iv_rank,IV percentile within its own trailing year,1,"the level filter that failed, made stationary",0.026256351927323132,1.8036633816123588,0.019896794178177912,156,True,0.033485646381912176,1.3271660340442941,72

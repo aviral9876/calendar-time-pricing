@@ -1,0 +1,9 @@
+measure,half_life_days,n_finite_placebos,currency
+true,639.877516324422,20,BTC
+placebo_mean,213.7253489882502,20,BTC
+placebo_p05,78.61095105101597,20,BTC
+placebo_p95,514.3427846988972,20,BTC
+true,inf,12,ETH
+placebo_mean,355.7039536427696,12,ETH
+placebo_p05,84.4988410154456,12,ETH
+placebo_p95,868.413635296736,12,ETH

@@ -1,0 +1,13 @@
+asset,greek,expected,beta_per_sd,t,n,n_fridays,rationale
+BTC,gamma_per_vega,-1,0.026045305954460782,7.786476122039959,2070,359,realized movement paid per unit of vega sold
+BTC,theta_per_vega,1,-0.04168770536112795,-8.540444183205969,2070,359,"the carry, and gamma's mirror"
+BTC,volga_per_vega,-1,-0.0002803296805198498,-0.17727910572305158,2070,359,"convexity to an IV move, and IV moves against"
+BTC,vanna_per_vega,0,-0.00040479721646655495,-0.1960141313714638,2070,359,no prior
+BTC,charm_per_day,0,-0.00355725761193083,-1.2032445397845588,2070,359,no prior; delta drift is a hedging cost
+BTC,wknd_frac (incumbent),1,0.03290976122050882,8.276818559970327,2070,359,weekend share of the life sold
+ETH,gamma_per_vega,-1,0.026365212589287913,5.048498083860899,1501,280,realized movement paid per unit of vega sold
+ETH,theta_per_vega,1,-0.049178753118191414,-4.407181382284817,1501,280,"the carry, and gamma's mirror"
+ETH,volga_per_vega,-1,-0.0049570992741954974,-1.4687600020666278,1501,280,"convexity to an IV move, and IV moves against"
+ETH,vanna_per_vega,0,0.006944999253925239,2.098785440516127,1501,280,no prior
+ETH,charm_per_day,0,-0.016952875427410728,-3.393257076668165,1501,280,no prior; delta drift is a hedging cost
+ETH,wknd_frac (incumbent),1,0.034049516191743796,5.886554775003659,1501,280,weekend share of the life sold
