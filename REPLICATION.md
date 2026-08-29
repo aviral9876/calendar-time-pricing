@@ -1,6 +1,7 @@
 # Replication package
 
-**The Price of Calendar Time in a Market That Never Closes**
+**Closure or Information? Weekend Variance and Option Prices in a Market
+That Never Closes**
 
 This package reproduces every table, figure and in-text number in the paper from
 raw source data. There is no licensed or proprietary data: everything is
@@ -37,7 +38,7 @@ Three commands, in order. Stages are resumable and safe to interrupt.
 ```bash
 python scripts/run_backfill.py --all      # collect (6-9 h per currency, network)
 python scripts/run_weekend_all.py         # estimate everything (2-4 h, offline)
-python scripts/build_paper.py --src paper/weekend_ms.md   # typeset
+python scripts/build_paper.py --src paper/weekend_ms.md --journal  # typeset
 ```
 
 **Expected runtime.** The collection stage is dominated by Deribit's rate limit
